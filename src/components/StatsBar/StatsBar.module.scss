@@ -1,0 +1,58 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.statsBar {
+  background-color: v.$surface;
+  border-top: 1px solid v.$border;
+  border-bottom: 1px solid v.$border;
+  padding: v.$spacing-xl 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$spacing-xl;
+  text-align: center;
+
+  @include m.tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: v.$spacing-md;
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-xs;
+
+  &:not(:last-child) {
+    @include m.tablet {
+      border-right: 1px solid v.$border;
+    }
+  }
+}
+
+.number {
+  font-size: v.$text-3xl;
+  font-weight: 800;
+  color: v.$accent;
+  letter-spacing: -0.02em;
+  line-height: 1;
+
+  @include m.desktop {
+    font-size: v.$text-5xl;
+  }
+}
+
+.label {
+  font-size: v.$text-xs;
+  font-weight: 600;
+  color: v.$text-secondary;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

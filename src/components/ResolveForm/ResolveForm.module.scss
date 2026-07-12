@@ -1,0 +1,127 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.form {
+  width: 100%;
+  max-width: v.$max-width-form;
+  margin: 0 auto;
+  @include m.flex-column;
+  gap: v.$spacing-sm;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+  width: 100%;
+
+  @include m.tablet {
+    flex-direction: row;
+    align-items: stretch;
+    gap: v.$spacing-sm;
+  }
+}
+
+.inputWrapper {
+  flex: 1;
+  position: relative;
+  @include m.flex-column;
+}
+
+.input {
+  width: 100%;
+  padding: v.$spacing-md v.$spacing-lg;
+  background-color: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$radius-md;
+  color: v.$text-primary;
+  font-size: v.$text-base;
+  line-height: 1.5;
+  transition: v.$transition-smooth;
+  box-shadow: v.$shadow-premium, v.$shadow-inset;
+
+  &::placeholder {
+    color: v.$text-muted;
+  }
+
+  &:hover {
+    border-color: v.$border-focus;
+  }
+
+  &:focus {
+    border-color: v.$accent;
+    background-color: v.$bg;
+    box-shadow:
+      0 0 0 1px v.$accent,
+      v.$shadow-premium;
+    outline: none;
+  }
+
+  &.inputError {
+    border-color: v.$danger;
+
+    &:focus {
+      box-shadow:
+        0 0 0 1px v.$danger,
+        v.$shadow-premium;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.button {
+  padding: v.$spacing-md v.$spacing-xl;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  font-weight: 600;
+  border-radius: v.$radius-md;
+  font-size: v.$text-base;
+  text-align: center;
+  transition: v.$transition-smooth;
+  box-shadow: v.$shadow-premium;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background-color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: v.$surface;
+    color: v.$text-muted;
+    border: 1px solid v.$border;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  @include m.focus-ring;
+}
+
+.metaRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: v.$spacing-md;
+  padding: 0 v.$spacing-xs;
+  font-size: v.$text-xs;
+  line-height: 1.4;
+  min-height: 18px;
+}
+
+.helpText {
+  color: v.$text-muted;
+}
+
+.errorMessage {
+  color: v.$danger;
+  font-weight: 500;
+  flex: 1;
+}

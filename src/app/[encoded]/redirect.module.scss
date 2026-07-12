@@ -1,0 +1,95 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: v.$bg;
+  padding: 0 v.$spacing-md;
+}
+
+.header {
+  @include m.flex-center;
+  height: 80px;
+  max-width: v.$max-width-content;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: v.$font-sans;
+  font-size: v.$text-sm;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: v.$text-primary;
+}
+
+.main {
+  flex: 1;
+  max-width: v.$max-width-content;
+  width: 100%;
+  margin: 0 auto;
+  @include m.flex-center;
+  padding: v.$spacing-xl 0 v.$spacing-xxl;
+}
+
+.errorCard {
+  width: 100%;
+  max-width: v.$max-width-form;
+  background-color: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-premium;
+  padding: v.$spacing-xl;
+  @include m.flex-column;
+  gap: v.$spacing-md;
+  text-align: center;
+  align-items: center;
+}
+
+.errorIcon {
+  font-size: 40px;
+}
+
+.errorTitle {
+  font-size: v.$text-xl;
+  font-weight: 700;
+  color: v.$text-primary;
+  letter-spacing: -0.01em;
+
+  @include m.tablet {
+    font-size: v.$text-2xl;
+  }
+}
+
+.errorMessage {
+  font-size: v.$text-sm;
+  color: v.$text-muted;
+  line-height: 1.6;
+  max-width: 360px;
+}
+
+.homeButton {
+  margin-top: v.$spacing-sm;
+  padding: v.$spacing-md v.$spacing-xl;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  font-weight: 600;
+  font-size: v.$text-sm;
+  border-radius: v.$radius-md;
+  transition: v.$transition-smooth;
+  box-shadow: v.$shadow-premium;
+
+  &:hover {
+    background-color: #ffffff;
+    transform: translateY(-1px);
+    color: v.$bg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include m.focus-ring;
+}

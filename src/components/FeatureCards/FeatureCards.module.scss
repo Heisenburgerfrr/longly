@@ -1,0 +1,160 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.featureSection {
+  background-color: v.$bg;
+  padding: v.$spacing-xxl 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-xxl;
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+}
+
+.preHeading {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: v.$accent;
+  text-transform: uppercase;
+  margin-bottom: v.$spacing-sm;
+  display: block;
+}
+
+.heading {
+  font-size: v.$text-2xl;
+  font-weight: 800;
+  color: v.$text-primary;
+  margin-bottom: v.$spacing-sm;
+  letter-spacing: -0.01em;
+
+  @include m.tablet {
+    font-size: v.$text-4xl;
+  }
+}
+
+.description {
+  font-size: v.$text-sm;
+  color: v.$text-muted;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$spacing-xl;
+  width: 100%;
+
+  @include m.tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  @include m.subtle-glow;
+  background-color: v.$surface;
+  border-radius: v.$radius-lg;
+  padding: v.$spacing-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition:
+    transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.iconWrapper {
+  background-color: rgba(41, 151, 255, 0.1);
+  border: 1px solid rgba(41, 151, 255, 0.15);
+  width: 44px;
+  height: 44px;
+  border-radius: v.$radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: v.$spacing-md;
+  color: v.$accent;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+}
+
+.cardTitle {
+  font-size: v.$text-lg;
+  font-weight: 700;
+  color: v.$text-primary;
+  margin-bottom: v.$spacing-sm;
+}
+
+.cardDescription {
+  font-size: v.$text-sm;
+  color: v.$text-secondary;
+  line-height: 1.5;
+  margin-bottom: v.$spacing-lg;
+  min-height: 60px;
+}
+
+.bulletList {
+  list-style: none;
+  width: 100%;
+  margin-bottom: v.$spacing-xl;
+  @include m.flex-column;
+  gap: v.$spacing-sm;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-xs;
+  font-size: v.$text-sm;
+  color: v.$text-muted;
+
+  &::before {
+    content: "✓";
+    color: v.$accent;
+    font-weight: 700;
+    font-size: 12px;
+  }
+}
+
+.learnMoreLink {
+  font-size: v.$text-sm;
+  font-weight: 600;
+  color: v.$accent;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  cursor: pointer;
+
+  &:hover {
+    color: v.$accent-hover;
+
+    .arrow {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}

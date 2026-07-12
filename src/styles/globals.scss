@@ -1,0 +1,75 @@
+@use "./variables" as v;
+@use "./mixins" as m;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  background-color: v.$bg;
+  color: v.$text-primary;
+  font-family: v.$font-sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  color: v.$accent;
+  text-decoration: none;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$accent-hover;
+  }
+
+  @include m.focus-ring;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  @include m.focus-ring;
+}
+
+button {
+  cursor: pointer;
+}
+
+// Custom Premium Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: v.$bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: v.$border;
+  border-radius: 4px;
+
+  &:hover {
+    background: v.$border-focus;
+  }
+}

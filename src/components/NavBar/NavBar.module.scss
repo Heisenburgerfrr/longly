@@ -1,0 +1,179 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.navBar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid v.$border;
+  height: 72px;
+  transition: v.$transition-smooth;
+}
+
+.container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: v.$font-sans;
+  font-size: v.$text-base;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: v.$text-primary;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.navLinks {
+  display: none;
+  align-items: center;
+  gap: v.$spacing-xl;
+
+  @include m.tablet {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-size: v.$text-sm;
+  font-weight: 500;
+  color: v.$text-secondary;
+  cursor: pointer;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$text-primary;
+  }
+}
+
+.actions {
+  display: none;
+  align-items: center;
+  gap: v.$spacing-md;
+
+  @include m.tablet {
+    display: flex;
+  }
+}
+
+.ctaButton {
+  padding: v.$spacing-xs v.$spacing-md;
+  font-size: v.$text-sm;
+  font-weight: 600;
+  border-radius: v.$radius-sm;
+  transition: v.$transition-smooth;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  border: 1px solid v.$text-primary;
+
+  &:hover {
+    background-color: transparent;
+    color: v.$text-primary;
+  }
+}
+
+// Mobile Menu Button (Hamburger)
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 14px;
+  cursor: pointer;
+  z-index: 1010;
+
+  @include m.tablet {
+    display: none;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: v.$text-primary;
+    border-radius: 2px;
+    transition:
+      transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+      opacity 0.3s ease;
+  }
+
+  &.active {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+// Mobile Menu Panel
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: v.$bg;
+  z-index: 1005;
+  display: flex;
+  flex-direction: column;
+  padding: 100px v.$spacing-xl v.$spacing-xl;
+  gap: v.$spacing-xl;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  @include m.tablet {
+    display: none;
+  }
+}
+
+.mobileNavLink {
+  font-size: v.$text-xl;
+  font-weight: 600;
+  color: v.$text-secondary;
+  cursor: pointer;
+  padding: v.$spacing-sm 0;
+  border-bottom: 1px solid v.$border;
+
+  &:hover {
+    color: v.$text-primary;
+  }
+}
+
+.mobileCtaButton {
+  margin-top: v.$spacing-md;
+  padding: v.$spacing-md;
+  font-size: v.$text-base;
+  font-weight: 600;
+  text-align: center;
+  border-radius: v.$radius-md;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    background-color: #ffffff;
+  }
+}

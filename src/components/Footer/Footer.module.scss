@@ -1,0 +1,100 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.footer {
+  background-color: v.$bg;
+  border-top: 1px solid v.$border;
+  padding: v.$spacing-xxl 0 v.$spacing-xl;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-xxl;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$spacing-xl;
+  width: 100%;
+
+  @include m.tablet {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-md;
+}
+
+.colTitle {
+  font-size: v.$text-sm;
+  font-weight: 700;
+  color: v.$text-primary;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.linksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-xs;
+}
+
+.link {
+  font-size: v.$text-sm;
+  color: v.$text-muted;
+  cursor: pointer;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$text-primary;
+  }
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$spacing-md;
+  border-top: 1px solid v.$border;
+  padding-top: v.$spacing-xl;
+  width: 100%;
+
+  @include m.tablet {
+    flex-direction: row;
+  }
+}
+
+.copyright {
+  font-size: v.$text-xs;
+  color: v.$text-muted;
+  letter-spacing: 0.02em;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-md;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: v.$text-secondary;
+  border: 1px solid v.$border;
+  border-radius: 4px;
+  padding: 2px 8px;
+  background-color: v.$surface;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

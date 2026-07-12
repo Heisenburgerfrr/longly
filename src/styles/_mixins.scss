@@ -1,0 +1,65 @@
+@use "./variables" as v;
+
+// Flexbox Layout Helpers
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Accessible Focus Ring Indicators
+@mixin focus-ring {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid v.$accent;
+    outline-offset: 2px;
+  }
+}
+
+// Responsive Media Queries (Mobile First)
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+// Accessibility Fallback for Motion Design
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Premium Glow Border/Hover Effect
+@mixin subtle-glow {
+  box-shadow: v.$shadow-premium, v.$shadow-inset;
+  transition: v.$transition-smooth;
+  border: 1px solid v.$border;
+
+  &:hover {
+    border-color: v.$border-focus;
+    box-shadow:
+      0 6px 35px rgba(0, 0, 0, 0.6),
+      v.$shadow-inset;
+  }
+}

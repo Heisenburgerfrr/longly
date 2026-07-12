@@ -1,0 +1,304 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.sliderSection {
+  background-color: v.$bg;
+  padding: v.$spacing-xxl 0;
+  border-bottom: 1px solid v.$border;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-xl;
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+}
+
+.preHeading {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: v.$accent;
+  text-transform: uppercase;
+  margin-bottom: v.$spacing-sm;
+  display: block;
+}
+
+.heading {
+  font-size: v.$text-2xl;
+  font-weight: 800;
+  color: v.$text-primary;
+  margin-bottom: v.$spacing-sm;
+
+  @include m.tablet {
+    font-size: v.$text-4xl;
+  }
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: v.$spacing-xs;
+  border-bottom: 1px solid v.$border;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: v.$spacing-md;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: v.$text-muted;
+  font-size: v.$text-sm;
+  font-weight: 600;
+  padding: v.$spacing-sm v.$spacing-md;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$text-primary;
+  }
+
+  &.active {
+    color: v.$accent;
+    border-bottom-color: v.$accent;
+  }
+}
+
+.contentBody {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$spacing-xl;
+  width: 100%;
+  align-items: center;
+  margin-top: v.$spacing-md;
+
+  @include m.tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.textCol {
+  @include m.flex-column;
+  align-items: flex-start;
+  gap: v.$spacing-md;
+  text-align: left;
+}
+
+.useCaseTitle {
+  font-size: v.$text-xl;
+  font-weight: 800;
+  color: v.$text-primary;
+  letter-spacing: -0.01em;
+
+  @include m.tablet {
+    font-size: v.$text-3xl;
+  }
+}
+
+.useCaseDesc {
+  font-size: v.$text-base;
+  color: v.$text-secondary;
+  line-height: 1.6;
+}
+
+.readMore {
+  font-size: v.$text-sm;
+  font-weight: 600;
+  color: v.$accent;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  &:hover {
+    color: v.$accent-hover;
+
+    .arrow {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.previewCol {
+  @include m.flex-center;
+  width: 100%;
+}
+
+.previewFrame {
+  width: 100%;
+  max-width: 460px;
+  height: 280px;
+  background-color: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-premium;
+  padding: v.$spacing-xl;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+// Business Card Mockup
+.businessCardMock {
+  width: 80%;
+  height: 60%;
+  background: linear-gradient(135deg, #1e1e20 0%, #111112 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  padding: v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.bcLogo {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: v.$text-primary;
+}
+
+.bcLink {
+  font-size: 8px;
+  font-family: v.$font-mono;
+  color: v.$accent;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1.3;
+  margin-top: v.$spacing-sm;
+  opacity: 0.8;
+}
+
+.bcName {
+  font-size: v.$text-sm;
+  font-weight: 700;
+  color: v.$text-primary;
+  margin-top: auto;
+}
+
+.bcTitle {
+  font-size: 9px;
+  color: v.$text-muted;
+}
+
+// Bio Mockup
+.bioMock {
+  width: 90%;
+  height: 90%;
+  background-color: rgba(11, 11, 12, 0.5);
+  border-radius: 12px;
+  padding: v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+  margin: auto;
+  border: 1px solid v.$border;
+}
+
+.bioHeader {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-sm;
+}
+
+.bioAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: v.$border;
+}
+
+.bioMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bioUsername {
+  font-size: v.$text-sm;
+  font-weight: 700;
+  color: v.$text-primary;
+}
+
+.bioFollowers {
+  font-size: 10px;
+  color: v.$text-muted;
+}
+
+.bioText {
+  font-size: v.$text-xs;
+  color: v.$text-secondary;
+  line-height: 1.4;
+}
+
+.bioLink {
+  color: v.$accent;
+  font-weight: 600;
+  word-break: break-all;
+  font-size: v.$text-xs;
+}
+
+// Chat Mockup
+.chatMock {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: v.$spacing-sm;
+}
+
+.chatMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 90%;
+  align-self: flex-start;
+}
+
+.chatUser {
+  font-size: 11px;
+  font-weight: 700;
+  color: v.$text-primary;
+}
+
+.chatBubble {
+  background-color: v.$border;
+  padding: v.$spacing-sm v.$spacing-md;
+  border-radius: 4px 12px 12px 12px;
+  font-size: v.$text-xs;
+  color: v.$text-secondary;
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.chatBubbleLong {
+  background-color: rgba(41, 151, 255, 0.1);
+  border: 1px solid rgba(41, 151, 255, 0.2);
+  padding: v.$spacing-sm v.$spacing-md;
+  border-radius: 4px 12px 12px 12px;
+  font-size: v.$text-xs;
+  color: v.$accent;
+  line-height: 1.4;
+  word-break: break-all;
+}

@@ -1,68 +1,71 @@
-import Image from "next/image";
-import style from "./page.module.scss";
+/**
+ * Longly Homepage Redesign
+ *
+ * NOTE FOR RONE:
+ * The following sections contain placeholder satirical content that you should personalize
+ * before shipping:
+ * 1. LogoStrip (src/components/LogoStrip/LogoStrip.tsx) - Fictional developer tool integrations.
+ * 2. Testimonial (src/components/Testimonial/Testimonial.tsx) - Fictional VP & Architect reviews.
+ * 3. UseCaseSlider (src/components/UseCaseSlider/UseCaseSlider.tsx) - Comedic social bio and card mockups.
+ */
+
+import { Metadata } from "next";
+import AnnouncementBar from "@/components/AnnouncementBar/AnnouncementBar";
+import NavBar from "@/components/NavBar/NavBar";
+import Hero from "@/components/Hero/Hero";
+import LogoStrip from "@/components/LogoStrip/LogoStrip";
+import FeatureCards from "@/components/FeatureCards/FeatureCards";
+import StatsBar from "@/components/StatsBar/StatsBar";
+import Testimonial from "@/components/Testimonial/Testimonial";
+import UseCaseSlider from "@/components/UseCaseSlider/UseCaseSlider";
+import ClosingBanner from "@/components/ClosingBanner/ClosingBanner";
+import Footer from "@/components/Footer/Footer";
+import ExitIntentPopup from "@/components/ExitIntentPopup/ExitIntentPopup";
+import styles from "./page.module.scss";
+
+export const metadata: Metadata = {
+  title: "Longly - Absurdly Long Reversible URLs",
+  description:
+    "The premium satirical URL longener. Convert standard links into beautifully descriptive, fully reversible, human-readable prose with zero database storage.",
+};
 
 export default function Home() {
   return (
-    <div className={style.container}>
-      <main className={style.main}>
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={style.contentWrapper}>
-          <h1 className={style.title}>
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className={style.description}>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={style.buttonGroup}>
-          <a
-            className={style.primaryButton}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={style.secondaryButton}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className={styles.container}>
+      {/* 1. Announcement Bar */}
+      <AnnouncementBar />
+
+      {/* 2. Sticky Nav Bar */}
+      <NavBar />
+
+      <main className={styles.main}>
+        {/* 3. Hero Section (with Inline Tool Widget) */}
+        <Hero />
+
+        {/* 4. Logo Strip */}
+        <LogoStrip />
+
+        {/* 5. Three-Card Feature Row */}
+        <FeatureCards />
+
+        {/* 6. Stats Bar */}
+        <StatsBar />
+
+        {/* 7. Testimonial Section */}
+        <Testimonial />
+
+        {/* 8. Absurd Use Cases Slider */}
+        <UseCaseSlider />
+
+        {/* 9. Closing CTA Banner */}
+        <ClosingBanner />
       </main>
+
+      {/* 10. Multi-column Footer */}
+      <Footer />
+
+      {/* 11. Exit Intent Popup Modal */}
+      <ExitIntentPopup />
     </div>
   );
 }

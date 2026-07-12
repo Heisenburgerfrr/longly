@@ -1,0 +1,158 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.interactiveArea {
+  @include m.flex-column;
+  gap: v.$spacing-lg;
+  width: 100%;
+  background: rgba(22, 22, 23, 0.4);
+  border: 1px solid v.$border;
+  border-radius: v.$radius-lg;
+  box-shadow:
+    v.$shadow-premium,
+    0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  padding: v.$spacing-xl;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  max-width: v.$max-width-form;
+  margin: 0 auto;
+}
+
+.tabsContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: v.$spacing-sm;
+  border-bottom: 1px solid v.$border;
+  padding-bottom: v.$spacing-sm;
+  width: 100%;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: v.$text-muted;
+  font-size: v.$text-sm;
+  font-weight: 600;
+  padding: v.$spacing-xs v.$spacing-md;
+  cursor: pointer;
+  border-radius: v.$radius-sm;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$text-primary;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  &.active {
+    color: v.$bg;
+    background-color: v.$text-primary;
+    box-shadow: v.$shadow-premium;
+  }
+}
+
+.resultContainer {
+  margin-top: v.$spacing-xs;
+  width: 100%;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resolvedCard {
+  background-color: rgba(22, 22, 23, 0.8);
+  border: 1px solid v.$border;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-premium;
+  padding: v.$spacing-lg;
+  @include m.flex-column;
+  gap: v.$spacing-md;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.resolvedLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: v.$text-muted;
+  text-transform: uppercase;
+}
+
+.resolvedUrlContainer {
+  width: 100%;
+  padding: v.$spacing-md;
+  background-color: rgba(11, 11, 12, 0.9);
+  border: 1px solid v.$border;
+  border-radius: v.$radius-md;
+  word-break: break-all;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.resolvedLink {
+  color: v.$accent;
+  font-weight: 500;
+  text-decoration: none;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$accent-hover;
+    text-decoration: underline;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: v.$spacing-md;
+  width: 100%;
+  justify-content: center;
+  margin-top: v.$spacing-xs;
+}
+
+.actionButton {
+  flex: 1;
+  max-width: 180px;
+  padding: v.$spacing-sm v.$spacing-md;
+  background-color: transparent;
+  color: v.$text-primary;
+  font-weight: 600;
+  font-size: v.$text-sm;
+  border: 1px solid v.$border;
+  border-radius: v.$radius-sm;
+  cursor: pointer;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    background-color: v.$surface-hover;
+    border-color: v.$border-focus;
+  }
+}
+
+.actionButtonPrimary {
+  flex: 1;
+  max-width: 180px;
+  padding: v.$spacing-sm v.$spacing-md;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  font-weight: 600;
+  font-size: v.$text-sm;
+  border-radius: v.$radius-sm;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    background-color: #ffffff;
+  }
+}

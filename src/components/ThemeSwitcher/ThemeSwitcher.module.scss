@@ -1,0 +1,84 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.container {
+  @include m.flex-column;
+  gap: v.$spacing-sm;
+  width: 100%;
+  max-width: v.$max-width-form;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: v.$text-xs;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: v.$text-secondary;
+  text-align: left;
+  padding-left: v.$spacing-xs;
+}
+
+.segmentedControl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$spacing-sm;
+  background-color: v.$surface;
+  padding: v.$spacing-sm;
+  border-radius: v.$radius-md;
+  border: 1px solid v.$border;
+  box-shadow: v.$shadow-premium;
+
+  @include m.tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.segment {
+  @include m.flex-column;
+  align-items: center;
+  justify-content: center;
+  padding: v.$spacing-md;
+  background: transparent;
+  border-radius: v.$radius-sm;
+  border: 1px solid transparent;
+  text-align: center;
+  transition: v.$transition-smooth;
+
+  .label {
+    font-size: v.$text-sm;
+    font-weight: 500;
+    color: v.$text-secondary;
+    transition: v.$transition-smooth;
+  }
+
+  .desc {
+    font-size: 10px;
+    color: v.$text-muted;
+    margin-top: 2px;
+    transition: v.$transition-smooth;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+
+    .label {
+      color: v.$text-primary;
+    }
+  }
+
+  &.active {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: v.$border;
+    box-shadow: v.$shadow-inset;
+
+    .label {
+      color: v.$accent;
+    }
+
+    .desc {
+      color: v.$text-secondary;
+    }
+  }
+
+  @include m.focus-ring;
+}

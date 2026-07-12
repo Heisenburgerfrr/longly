@@ -1,0 +1,63 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.logoStrip {
+  background-color: v.$bg;
+  border-bottom: 1px solid v.$border;
+  padding: v.$spacing-xl 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-md;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: v.$text-muted;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.logoRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: v.$spacing-xl;
+  width: 100%;
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  @include m.tablet {
+    gap: v.$spacing-xxl;
+  }
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-xs;
+  color: v.$text-secondary;
+  font-weight: 700;
+  font-size: v.$text-sm;
+  letter-spacing: 0.05em;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+}

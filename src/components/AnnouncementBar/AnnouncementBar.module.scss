@@ -1,0 +1,60 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.announcementBar {
+  background-color: v.$surface;
+  border-bottom: 1px solid v.$border;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 v.$spacing-md;
+  overflow: hidden;
+  position: relative;
+  z-index: 1001;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$spacing-sm;
+  font-size: v.$text-xs;
+  font-weight: 500;
+  color: v.$text-secondary;
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: v.$text-primary;
+
+    .linkText {
+      color: v.$accent-hover;
+      text-decoration: underline;
+    }
+  }
+}
+
+.badge {
+  background-color: rgba(41, 151, 255, 0.15);
+  color: v.$accent;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(41, 151, 255, 0.25);
+}
+
+.text {
+  letter-spacing: 0.01em;
+}
+
+.linkText {
+  color: v.$accent;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}

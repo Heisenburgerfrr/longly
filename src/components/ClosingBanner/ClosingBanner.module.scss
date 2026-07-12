@@ -1,0 +1,78 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.closingBanner {
+  background: linear-gradient(135deg, #161617 0%, #0b0b0c 100%);
+  border-top: 1px solid v.$border;
+  border-bottom: 1px solid v.$border;
+  padding: v.$spacing-xxl 0;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(41, 151, 255, 0.05) 0%,
+    rgba(11, 11, 12, 0) 70%
+  );
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-lg;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: v.$text-3xl;
+  font-weight: 800;
+  color: v.$text-primary;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  @include m.tablet {
+    font-size: v.$text-5xl;
+  }
+}
+
+.subtitle {
+  font-size: v.$text-base;
+  color: v.$text-secondary;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+.button {
+  padding: v.$spacing-md v.$spacing-xxl;
+  font-size: v.$text-base;
+  font-weight: 600;
+  border-radius: v.$radius-md;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  transition: v.$transition-smooth;
+  border: 1px solid v.$text-primary;
+  box-shadow: v.$shadow-premium;
+
+  &:hover {
+    background-color: transparent;
+    color: v.$text-primary;
+  }
+}

@@ -1,0 +1,143 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: v.$spacing-md;
+  animation: fadeIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.modal {
+  background-color: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$radius-lg;
+  box-shadow:
+    v.$shadow-premium,
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  width: 100%;
+  max-width: 480px;
+  padding: v.$spacing-xl;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.closeButton {
+  position: absolute;
+  top: v.$spacing-md;
+  right: v.$spacing-md;
+  color: v.$text-muted;
+  cursor: pointer;
+  transition: v.$transition-smooth;
+  padding: v.$spacing-xs;
+
+  &:hover {
+    color: v.$text-primary;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+}
+
+.iconWrapper {
+  background-color: rgba(255, 69, 58, 0.1);
+  border: 1px solid rgba(255, 69, 58, 0.2);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$danger;
+  margin-bottom: v.$spacing-md;
+
+  svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+}
+
+.title {
+  font-size: v.$text-xl;
+  font-weight: 800;
+  color: v.$text-primary;
+  margin-bottom: v.$spacing-sm;
+}
+
+.description {
+  font-size: v.$text-sm;
+  color: v.$text-secondary;
+  line-height: 1.6;
+  margin-bottom: v.$spacing-xl;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: v.$spacing-md;
+  font-size: v.$text-base;
+  font-weight: 600;
+  border-radius: v.$radius-md;
+  background-color: v.$text-primary;
+  color: v.$bg;
+  transition: v.$transition-smooth;
+  border: 1px solid v.$text-primary;
+  margin-bottom: v.$spacing-sm;
+
+  &:hover {
+    background-color: transparent;
+    color: v.$text-primary;
+  }
+}
+
+.declineButton {
+  background: none;
+  border: none;
+  font-size: v.$text-xs;
+  font-weight: 500;
+  color: v.$text-muted;
+  cursor: pointer;
+  transition: v.$transition-smooth;
+
+  &:hover {
+    color: v.$text-primary;
+    text-decoration: underline;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,95 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.testimonialSection {
+  background-color: v.$bg;
+  padding: v.$spacing-xxl 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.quoteCard {
+  @include m.subtle-glow;
+  background-color: v.$surface;
+  border-radius: v.$radius-lg;
+  padding: v.$spacing-xl v.$spacing-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  @include m.tablet {
+    padding: v.$spacing-xxl;
+  }
+}
+
+.quoteIcon {
+  font-size: v.$text-6xl;
+  line-height: 1;
+  color: rgba(41, 151, 255, 0.25);
+  font-family: Georgia, serif;
+  margin-bottom: -10px;
+}
+
+.quoteText {
+  font-size: v.$text-lg;
+  font-weight: 500;
+  color: v.$text-primary;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  margin-bottom: v.$spacing-xl;
+
+  @include m.tablet {
+    font-size: v.$text-2xl;
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-md;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, v.$accent 0%, #1e1e20 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: v.$bg;
+  font-size: v.$text-base;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: v.$shadow-premium;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: v.$text-base;
+  font-weight: 700;
+  color: v.$text-primary;
+  line-height: 1.2;
+}
+
+.title {
+  font-size: v.$text-xs;
+  color: v.$text-muted;
+  margin-top: 2px;
+}

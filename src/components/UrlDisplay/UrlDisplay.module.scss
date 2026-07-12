@@ -1,0 +1,124 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.container {
+  @include m.flex-column;
+  gap: v.$spacing-sm;
+  width: 100%;
+  max-width: v.$max-width-form;
+  margin: 0 auto;
+}
+
+.titleRow {
+  @include m.flex-space-between;
+  padding: 0 v.$spacing-xs;
+  font-size: v.$text-xs;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.title {
+  color: v.$text-secondary;
+}
+
+.stats {
+  color: v.$accent;
+  font-family: v.$font-mono;
+}
+
+.displayPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-premium;
+  padding: v.$spacing-md v.$spacing-lg;
+  gap: v.$spacing-md;
+  overflow: hidden;
+}
+
+.urlContent {
+  flex: 1;
+  font-family: v.$font-mono;
+  font-size: v.$text-sm;
+  line-height: 1.6;
+  color: v.$text-primary;
+  word-break: break-all;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hostPrefix {
+  color: v.$text-muted;
+  user-select: none;
+}
+
+.wordsWrapper {
+  display: inline;
+}
+
+@keyframes growWord {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.word,
+.hyphen {
+  display: inline-block;
+  opacity: 0;
+  animation: growWord 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  animation-delay: var(--delay);
+
+  @include m.reduced-motion {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+.hyphen {
+  color: v.$text-muted;
+}
+
+.copyButton {
+  align-self: center;
+  padding: v.$spacing-sm v.$spacing-md;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid v.$border;
+  border-radius: v.$radius-sm;
+  color: v.$text-primary;
+  font-size: v.$text-xs;
+  font-weight: 600;
+  transition: v.$transition-smooth;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 68px;
+  height: 32px;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: v.$border-focus;
+  }
+
+  &.copied {
+    background-color: rgba(48, 209, 88, 0.15);
+    border-color: v.$success;
+    color: v.$success;
+  }
+}
+
+.copyText,
+.copiedText {
+  display: block;
+}
