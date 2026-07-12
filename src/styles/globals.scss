@@ -1,7 +1,7 @@
 @use "./variables" as v;
 @use "./mixins" as m;
 
-:root {
+@mixin light-theme-variables {
   // Light Theme (Default - Bitly-Inspired)
   --bg: #ffffff;
   --surface: #f4f6f8;
@@ -37,10 +37,23 @@
   --widget-accent: #ee6123;
   --widget-border: #e4e8ec;
   --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+
+  // URL input and textarea theme variables
+  --input-bg: #ffffff;
+  --input-hover-border: #c9ccd0;
+  --input-disabled-bg: #f4f6f8;
+  --input-focus-shadow: rgba(238, 97, 35, 0.15);
+  --tab-hover-bg: #f4f6f8;
+  --result-bg: #f8f9fa;
+
+  // Mockup theme variables
+  --bc-bg: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  --bc-border: 1px solid #e4e8ec;
+  --bc-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --avatar-bg: #e4e8ec;
 }
 
-[data-theme="dark"],
-.dark {
+@mixin dark-theme-variables {
   // Dark Theme (Original Longly Carbon Theme with Orange Accents)
   --bg: #0b0b0c;
   --surface: #161617;
@@ -76,6 +89,39 @@
   --widget-accent: #ee6123;
   --widget-border: #333336;
   --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+
+  // URL input and textarea theme variables
+  --input-bg: #1e1e20;
+  --input-hover-border: #44444a;
+  --input-disabled-bg: #0b0b0c;
+  --input-focus-shadow: rgba(238, 97, 35, 0.25);
+  --tab-hover-bg: #1e1e20;
+  --result-bg: #0b0b0c;
+
+  // Mockup theme variables
+  --bc-bg: linear-gradient(135deg, #1e1e20 0%, #111112 100%);
+  --bc-border: 1px solid rgba(255, 255, 255, 0.08);
+  --bc-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --avatar-bg: #333336;
+}
+
+:root {
+  @include light-theme-variables;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-theme-variables;
+  }
+}
+
+html[data-theme="light"] {
+  @include light-theme-variables;
+}
+
+html[data-theme="dark"],
+.dark {
+  @include dark-theme-variables;
 }
 
 * {

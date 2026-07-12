@@ -37,10 +37,10 @@
 .errorCard {
   width: 100%;
   max-width: v.$max-width-form;
-  background-color: v.$surface;
+  background-color: var(--widget-bg);
   border: 1px solid v.$border;
   border-radius: v.$radius-lg;
-  box-shadow: v.$shadow-premium;
+  box-shadow: var(--widget-shadow);
   padding: v.$spacing-xl;
   @include m.flex-column;
   gap: v.$spacing-md;
@@ -65,7 +65,7 @@
 
 .errorMessage {
   font-size: v.$text-sm;
-  color: v.$text-muted;
+  color: v.$text-secondary;
   line-height: 1.6;
   max-width: 360px;
 }
@@ -73,18 +73,20 @@
 .homeButton {
   margin-top: v.$spacing-sm;
   padding: v.$spacing-md v.$spacing-xl;
-  background-color: v.$text-primary;
-  color: v.$bg;
-  font-weight: 600;
+  background-color: v.$accent;
+  color: #ffffff;
+  font-weight: 700;
   font-size: v.$text-sm;
   border-radius: v.$radius-md;
   transition: v.$transition-smooth;
-  box-shadow: v.$shadow-premium;
+  box-shadow: 0 4px 12px rgba(238, 97, 35, 0.2);
+  border: 1px solid transparent;
 
   &:hover {
-    background-color: #ffffff;
+    background-color: v.$accent-hover;
     transform: translateY(-1px);
-    color: v.$bg;
+    box-shadow: 0 6px 16px rgba(238, 97, 35, 0.3);
+    color: #ffffff;
   }
 
   &:active {

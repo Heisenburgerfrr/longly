@@ -10,6 +10,14 @@ $widget-border-focus: var(--border-focus);
 $widget-danger: var(--danger);
 $widget-shadow: var(--widget-shadow);
 
+// Inner input/textarea variables
+$input-bg: var(--input-bg);
+$input-hover-border: var(--input-hover-border);
+$input-disabled-bg: var(--input-disabled-bg);
+$input-focus-shadow: var(--input-focus-shadow);
+$tab-hover-bg: var(--tab-hover-bg);
+$result-bg: var(--result-bg);
+
 .widgetCard {
   background-color: $widget-bg;
   border: 1px solid $widget-border;
@@ -47,7 +55,7 @@ $widget-shadow: var(--widget-shadow);
 
   &:hover {
     color: $widget-text-primary;
-    background-color: #f4f6f8;
+    background-color: $tab-hover-bg;
   }
 
   &.active {
@@ -92,7 +100,7 @@ $widget-shadow: var(--widget-shadow);
 .input {
   width: 100%;
   padding: 0.875rem 1.25rem;
-  background-color: #ffffff;
+  background-color: $input-bg;
   border: 2px solid $widget-border;
   border-radius: 8px;
   color: $widget-text-primary;
@@ -104,13 +112,13 @@ $widget-shadow: var(--widget-shadow);
   }
 
   &:hover {
-    border-color: #c9ccd0;
+    border-color: $input-hover-border;
   }
 
   &:focus {
     border-color: $widget-border-focus;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(238, 97, 35, 0.15);
+    box-shadow: 0 0 0 3px $input-focus-shadow;
   }
 
   &.inputError {
@@ -122,7 +130,7 @@ $widget-shadow: var(--widget-shadow);
   }
 
   &:disabled {
-    background-color: #f4f6f8;
+    background-color: $input-disabled-bg;
     color: $widget-text-muted;
     cursor: not-allowed;
   }
@@ -286,7 +294,7 @@ $widget-shadow: var(--widget-shadow);
   width: 100%;
   min-height: 120px;
   padding: 0.875rem 1.25rem;
-  background-color: #f8f9fa;
+  background-color: $result-bg;
   border: 1px solid $widget-border;
   border-radius: 8px;
   font-family: monospace;
@@ -310,7 +318,7 @@ $widget-shadow: var(--widget-shadow);
 
 .resultLinkBox {
   padding: 0.875rem 1.25rem;
-  background-color: #f8f9fa;
+  background-color: $result-bg;
   border: 1px solid $widget-border;
   border-radius: 8px;
   word-break: break-all;
@@ -374,7 +382,7 @@ $widget-shadow: var(--widget-shadow);
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #f4f6f8;
-    border-color: #c9ccd0;
+    background-color: $tab-hover-bg;
+    border-color: $input-hover-border;
   }
 }

@@ -25,3 +25,48 @@
     height: 20px;
   }
 }
+
+.sunIcon {
+  display: none;
+  stroke: currentColor;
+  fill: none;
+}
+
+.moonIcon {
+  display: block;
+  stroke: currentColor;
+  fill: none;
+}
+
+:global(html[data-theme="dark"]) .sunIcon {
+  display: block;
+}
+
+:global(html[data-theme="dark"]) .moonIcon {
+  display: none;
+}
+
+:global(html.dark) .sunIcon {
+  display: block;
+}
+
+:global(html.dark) .moonIcon {
+  display: none;
+}
+
+:global(html[data-theme="light"]) .sunIcon {
+  display: none;
+}
+
+:global(html[data-theme="light"]) .moonIcon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme="light"])) .sunIcon {
+    display: block;
+  }
+  :global(html:not([data-theme="light"])) .moonIcon {
+    display: none;
+  }
+}

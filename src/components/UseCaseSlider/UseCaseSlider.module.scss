@@ -1,6 +1,11 @@
 @use "../../styles/variables" as v;
 @use "../../styles/mixins" as m;
 
+$bc-bg: var(--bc-bg);
+$bc-border: var(--bc-border);
+$bc-shadow: var(--bc-shadow);
+$avatar-bg: var(--avatar-bg);
+
 .sliderSection {
   background-color: v.$bg;
   padding: v.$spacing-xxl 0;
@@ -160,10 +165,10 @@
 .businessCardMock {
   width: 80%;
   height: 60%;
-  background: linear-gradient(135deg, #1e1e20 0%, #111112 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: $bc-bg;
+  border: $bc-border;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: $bc-shadow;
   margin: auto;
   padding: v.$spacing-md;
   display: flex;
@@ -206,7 +211,7 @@
 .bioMock {
   width: 90%;
   height: 90%;
-  background-color: rgba(11, 11, 12, 0.5);
+  background-color: var(--widget-bg);
   border-radius: 12px;
   padding: v.$spacing-md;
   display: flex;
@@ -214,6 +219,7 @@
   gap: v.$spacing-sm;
   margin: auto;
   border: 1px solid v.$border;
+  box-shadow: var(--widget-shadow);
 }
 
 .bioHeader {
@@ -226,7 +232,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: v.$border;
+  background-color: $avatar-bg;
 }
 
 .bioMeta {
@@ -294,8 +300,8 @@
 }
 
 .chatBubbleLong {
-  background-color: rgba(41, 151, 255, 0.1);
-  border: 1px solid rgba(41, 151, 255, 0.2);
+  background-color: rgba(238, 97, 35, 0.08);
+  border: 1px solid rgba(238, 97, 35, 0.2);
   padding: v.$spacing-sm v.$spacing-md;
   border-radius: 4px 12px 12px 12px;
   font-size: v.$text-xs;
