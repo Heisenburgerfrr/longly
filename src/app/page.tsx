@@ -10,7 +10,6 @@
  */
 
 import { Metadata } from "next";
-import AnnouncementBar from "@/components/AnnouncementBar/AnnouncementBar";
 import NavBar from "@/components/NavBar/NavBar";
 import Hero from "@/components/Hero/Hero";
 import LogoStrip from "@/components/LogoStrip/LogoStrip";
@@ -32,9 +31,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className={styles.container}>
-      {/* 1. Announcement Bar */}
-      <AnnouncementBar />
-
       {/* 2. Sticky Nav Bar */}
       <NavBar />
 

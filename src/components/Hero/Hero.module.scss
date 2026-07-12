@@ -10,6 +10,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
+  @include m.fade-in-up(0.1s);
 }
 
 // Background mesh glow effect for premium "Apple.com-caliber" luxury look
@@ -20,11 +21,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 350px;
-  background: radial-gradient(
-    circle,
-    rgba(41, 151, 255, 0.08) 0%,
-    rgba(11, 11, 12, 0) 70%
-  );
+  background: var(--hero-glow);
   filter: blur(40px);
   z-index: 0;
   pointer-events: none;

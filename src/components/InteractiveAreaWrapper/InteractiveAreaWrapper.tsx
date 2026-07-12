@@ -3,11 +3,11 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const InteractiveArea = dynamic(
-  () => import("@/components/InteractiveArea/InteractiveArea"),
+const UrlInputWidget = dynamic(
+  () => import("@/components/UrlInputWidget/UrlInputWidget"),
   { ssr: false },
 );
 
 export default function InteractiveAreaWrapper() {
-  return <InteractiveArea />;
+  return <UrlInputWidget />;
 }

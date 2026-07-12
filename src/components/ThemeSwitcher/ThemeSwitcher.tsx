@@ -22,7 +22,6 @@ export default function ThemeSwitcher({
 }: ThemeSwitcherProps) {
   return (
     <div className={styles.container}>
-      <span className={styles.title}>ELONGATION VERBOSITY</span>
       <div className={styles.segmentedControl}>
         {THEMES.map((theme) => {
           const isActive = selected === theme.id;

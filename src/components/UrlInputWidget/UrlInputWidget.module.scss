@@ -1,0 +1,380 @@
+// Bitly-Style Colors for the White/Light Card Widget - Mapped to CSS variables for dark support
+$widget-bg: var(--widget-bg);
+$widget-text-primary: var(--widget-text-primary);
+$widget-text-secondary: var(--widget-text-secondary);
+$widget-text-muted: var(--widget-text-muted);
+$widget-accent: var(--widget-accent);
+$widget-accent-hover: var(--accent-hover);
+$widget-border: var(--widget-border);
+$widget-border-focus: var(--border-focus);
+$widget-danger: var(--danger);
+$widget-shadow: var(--widget-shadow);
+
+.widgetCard {
+  background-color: $widget-bg;
+  border: 1px solid $widget-border;
+  border-radius: 16px;
+  box-shadow: $widget-shadow;
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+// Tabs Styling
+.tabsContainer {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid $widget-border;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $widget-text-secondary;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    color: $widget-text-primary;
+    background-color: #f4f6f8;
+  }
+
+  &.active {
+    color: $widget-accent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $widget-accent;
+      border-radius: 3px 3px 0 0;
+    }
+  }
+}
+
+// Form Styling
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.inputLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: $widget-text-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.input {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background-color: #ffffff;
+  border: 2px solid $widget-border;
+  border-radius: 8px;
+  color: $widget-text-primary;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: $widget-text-muted;
+  }
+
+  &:hover {
+    border-color: #c9ccd0;
+  }
+
+  &:focus {
+    border-color: $widget-border-focus;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(238, 97, 35, 0.15);
+  }
+
+  &.inputError {
+    border-color: $widget-danger;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(224, 36, 36, 0.15);
+    }
+  }
+
+  &:disabled {
+    background-color: #f4f6f8;
+    color: $widget-text-muted;
+    cursor: not-allowed;
+  }
+}
+
+// CTA Button
+.ctaButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background-color: $widget-accent;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(238, 97, 35, 0.2);
+
+  &:hover:not(:disabled) {
+    background-color: $widget-accent-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(238, 97, 35, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: #c9ccd0;
+    color: #ffffff;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+// Verbosity Switcher
+.verbosityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.segmentedControl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  background-color: #f4f6f8;
+  padding: 0.375rem;
+  border-radius: 8px;
+  border: 1px solid $widget-border;
+
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.segmentButton {
+  background: transparent;
+  border: none;
+  padding: 0.625rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $widget-text-secondary;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .label {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .desc {
+    font-size: 0.7rem;
+    color: $widget-text-muted;
+    margin-top: 1px;
+  }
+
+  &:hover {
+    color: $widget-text-primary;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &.active {
+    background-color: #ffffff;
+    color: $widget-accent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    .desc {
+      color: $widget-text-secondary;
+    }
+  }
+}
+
+// Meta elements
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  min-height: 18px;
+}
+
+.helpText {
+  color: $widget-text-secondary;
+}
+
+.errorMessage {
+  color: $widget-danger;
+  font-weight: 700;
+}
+
+.charCount {
+  color: $widget-text-muted;
+  font-family: monospace;
+
+  &.overLimit {
+    color: $widget-danger;
+    font-weight: 700;
+  }
+}
+
+// Result Panel
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  border-top: 1px dashed $widget-border;
+  padding-top: 1.25rem;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: $widget-text-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.resultTextArea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.875rem 1.25rem;
+  background-color: #f8f9fa;
+  border: 1px solid $widget-border;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: $widget-text-primary;
+  resize: vertical;
+  line-height: 1.5;
+  outline: none;
+
+  &:focus {
+    border-color: $widget-accent;
+  }
+}
+
+.resultBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.resultLinkBox {
+  padding: 0.875rem 1.25rem;
+  background-color: #f8f9fa;
+  border: 1px solid $widget-border;
+  border-radius: 8px;
+  word-break: break-all;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.resultUrlLink {
+  color: $widget-accent;
+  text-decoration: none;
+  font-weight: 700;
+
+  &:hover {
+    color: $widget-accent-hover;
+    text-decoration: underline;
+  }
+}
+
+.resultActionRow {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.copyButton {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: $widget-accent;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(238, 97, 35, 0.15);
+
+  &:hover {
+    background-color: $widget-accent-hover;
+  }
+
+  &.copied {
+    background-color: #10b981;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
+  }
+}
+
+.visitButton {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: transparent;
+  color: $widget-text-primary;
+  border: 1px solid $widget-border;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #f4f6f8;
+    border-color: #c9ccd0;
+  }
+}

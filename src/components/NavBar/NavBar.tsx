@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import styles from "./NavBar.module.scss";
 
 export default function NavBar() {
@@ -61,6 +62,7 @@ export default function NavBar() {
         </div>
 
         <div className={styles.actions}>
+          <ThemeToggle />
           <button
             type="button"
             className={styles.ctaButton}
@@ -103,6 +105,25 @@ export default function NavBar() {
           >
             Examples
           </span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "10px 0",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "16px",
+                fontWeight: 600,
+                color: "var(--text-secondary)",
+              }}
+            >
+              Theme Mode
+            </span>
+            <ThemeToggle />
+          </div>
           <button
             type="button"
             className={styles.mobileCtaButton}

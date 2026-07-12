@@ -5,12 +5,13 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(11, 11, 12, 0.85);
+  background-color: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid v.$border;
   height: 72px;
   transition: v.$transition-smooth;
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .container {
@@ -50,7 +51,7 @@
 
 .navLink {
   font-size: v.$text-sm;
-  font-weight: 500;
+  font-weight: 600;
   color: v.$text-secondary;
   cursor: pointer;
   transition: v.$transition-smooth;
@@ -73,7 +74,7 @@
 .ctaButton {
   padding: v.$spacing-xs v.$spacing-md;
   font-size: v.$text-sm;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: v.$radius-sm;
   transition: v.$transition-smooth;
   background-color: v.$text-primary;
@@ -83,6 +84,7 @@
   &:hover {
     background-color: transparent;
     color: v.$text-primary;
+    border-color: v.$text-primary;
   }
 }
 
@@ -166,7 +168,7 @@
   margin-top: v.$spacing-md;
   padding: v.$spacing-md;
   font-size: v.$text-base;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
   border-radius: v.$radius-md;
   background-color: v.$text-primary;
@@ -174,6 +176,19 @@
   transition: v.$transition-smooth;
 
   &:hover {
-    background-color: #ffffff;
+    background-color: transparent;
+    color: v.$text-primary;
+    border: 1px solid v.$text-primary;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

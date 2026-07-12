@@ -5,6 +5,7 @@
   background-color: v.$bg;
   padding: v.$spacing-xxl 0;
   width: 100%;
+  @include m.fade-in-up(0.3s);
 }
 
 .container {

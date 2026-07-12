@@ -6,6 +6,7 @@
   padding: v.$spacing-xxl 0;
   border-bottom: 1px solid v.$border;
   width: 100%;
+  @include m.fade-in-up(0.6s);
 }
 
 .container {

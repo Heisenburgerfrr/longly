@@ -1,17 +1,17 @@
-// Color Palette (Muted, Premium Carbon Palette)
-$bg: #0b0b0c;
-$surface: #161617;
-$surface-hover: #1e1e20;
-$text-primary: #f5f5f7;
-$text-secondary: #a1a1a6;
-$text-muted: #86868b;
-$accent: #2997ff;
-$accent-hover: #51a9ff;
-$border: #333336;
-$border-focus: #44444a;
-$danger: #ff453a;
-$danger-bg: rgba(255, 69, 58, 0.1);
-$success: #30d158;
+// Color Palette mapping to CSS Custom Properties for dynamic Light/Dark mode
+$bg: var(--bg);
+$surface: var(--surface);
+$surface-hover: var(--surface-hover);
+$text-primary: var(--text-primary);
+$text-secondary: var(--text-secondary);
+$text-muted: var(--text-muted);
+$accent: var(--accent);
+$accent-hover: var(--accent-hover);
+$border: var(--border);
+$border-focus: var(--border-focus);
+$danger: var(--danger);
+$danger-bg: var(--danger-bg);
+$success: var(--success);
 
 // Fonts
 $font-sans:

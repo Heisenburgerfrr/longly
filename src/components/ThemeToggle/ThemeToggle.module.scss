@@ -1,0 +1,27 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$text-secondary;
+  padding: v.$spacing-xs;
+  border-radius: 50%;
+  transition: v.$transition-smooth;
+  width: 38px;
+  height: 38px;
+
+  &:hover {
+    color: v.$text-primary;
+    background-color: v.$surface-hover;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

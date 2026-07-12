@@ -63,3 +63,22 @@
       v.$shadow-inset;
   }
 }
+
+// Fade-in-up load animation mixin
+@mixin fade-in-up($delay: 0s, $duration: 0.8s) {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp $duration cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: $delay;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

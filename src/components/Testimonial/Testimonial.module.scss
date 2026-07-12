@@ -5,6 +5,7 @@
   background-color: v.$bg;
   padding: v.$spacing-xxl 0;
   width: 100%;
+  @include m.fade-in-up(0.5s);
 }
 
 .container {
@@ -36,7 +37,7 @@
 .quoteIcon {
   font-size: v.$text-6xl;
   line-height: 1;
-  color: rgba(41, 151, 255, 0.25);
+  color: var(--quote-color);
   font-family: Georgia, serif;
   margin-bottom: -10px;
 }

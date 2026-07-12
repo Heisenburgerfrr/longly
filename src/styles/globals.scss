@@ -1,6 +1,83 @@
 @use "./variables" as v;
 @use "./mixins" as m;
 
+:root {
+  // Light Theme (Default - Bitly-Inspired)
+  --bg: #ffffff;
+  --surface: #f4f6f8;
+  --surface-hover: #eef1f4;
+  --text-primary: #1c1e21;
+  --text-secondary: #5c6065;
+  --text-muted: #82878d;
+  --accent: #ee6123; // Bitly Orange
+  --accent-hover: #d5531b;
+  --border: #e4e8ec;
+  --border-focus: #ee6123;
+  --danger: #e02424;
+  --danger-bg: rgba(224, 36, 36, 0.1);
+  --success: #10b981;
+
+  // Custom component-specific styling overrides
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --hero-glow: radial-gradient(
+    circle,
+    rgba(238, 97, 35, 0.08) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  --quote-color: rgba(238, 97, 35, 0.25);
+  --closing-bg: linear-gradient(135deg, #ee6123 0%, #ff783d 100%);
+  --closing-btn-bg: #ffffff;
+  --closing-btn-text: #ee6123;
+
+  // Widget settings mapping
+  --widget-bg: #ffffff;
+  --widget-text-primary: #1c1e21;
+  --widget-text-secondary: #5c6065;
+  --widget-text-muted: #82878d;
+  --widget-accent: #ee6123;
+  --widget-border: #e4e8ec;
+  --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"],
+.dark {
+  // Dark Theme (Original Longly Carbon Theme with Orange Accents)
+  --bg: #0b0b0c;
+  --surface: #161617;
+  --surface-hover: #1e1e20;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #86868b;
+  --accent: #ee6123; // Bitly Orange
+  --accent-hover: #d5531b;
+  --border: #333336;
+  --border-focus: #44444a;
+  --danger: #ff453a;
+  --danger-bg: rgba(255, 69, 58, 0.1);
+  --success: #30d158;
+
+  // Custom component-specific styling overrides
+  --nav-bg: rgba(11, 11, 12, 0.85);
+  --hero-glow: radial-gradient(
+    circle,
+    rgba(238, 97, 35, 0.08) 0%,
+    rgba(11, 11, 12, 0) 70%
+  );
+  --quote-color: rgba(238, 97, 35, 0.25);
+  --closing-bg: linear-gradient(135deg, #161617 0%, #0b0b0c 100%);
+  --closing-btn-bg: var(--text-primary);
+  --closing-btn-text: var(--bg);
+
+  // Widget settings mapping (dark card for dark theme)
+  --widget-bg: #161617;
+  --widget-text-primary: #f5f5f7;
+  --widget-text-secondary: #a1a1a6;
+  --widget-text-muted: #86868b;
+  --widget-accent: #ee6123;
+  --widget-border: #333336;
+  --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

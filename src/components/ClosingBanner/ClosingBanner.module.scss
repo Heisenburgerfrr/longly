@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as m;
 
 .closingBanner {
-  background: linear-gradient(135deg, #161617 0%, #0b0b0c 100%);
+  background: var(--closing-bg);
   border-top: 1px solid v.$border;
   border-bottom: 1px solid v.$border;
   padding: v.$spacing-xxl 0;
@@ -10,6 +10,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  @include m.fade-in-up(0.7s);
 }
 
 .glow {
@@ -21,8 +22,8 @@
   height: 300px;
   background: radial-gradient(
     circle,
-    rgba(41, 151, 255, 0.05) 0%,
-    rgba(11, 11, 12, 0) 70%
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 70%
   );
   filter: blur(40px);
   z-index: 0;
@@ -63,16 +64,17 @@
 .button {
   padding: v.$spacing-md v.$spacing-xxl;
   font-size: v.$text-base;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: v.$radius-md;
-  background-color: v.$text-primary;
-  color: v.$bg;
+  background-color: var(--closing-btn-bg);
+  color: var(--closing-btn-text);
   transition: v.$transition-smooth;
-  border: 1px solid v.$text-primary;
+  border: 1px solid var(--closing-btn-bg);
   box-shadow: v.$shadow-premium;
 
   &:hover {
     background-color: transparent;
-    color: v.$text-primary;
+    color: var(--closing-btn-bg);
+    border-color: var(--closing-btn-bg);
   }
 }
