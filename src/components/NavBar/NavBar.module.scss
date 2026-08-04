@@ -2,16 +2,29 @@
 @use "../../styles/mixins" as m;
 
 .navBar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
   background-color: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid v.$border;
+  border-bottom: 1px solid var(--nav-border);
   height: 72px;
   transition: v.$transition-smooth;
   animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @media (max-width: 768px) {
+    background-color: #0b1f38;
+    backdrop-filter: none;
+
+    :global(html[data-theme="dark"]) &,
+    :global(html.dark) & {
+      background-color: #0c111d;
+    }
+  }
 }
 
 .container {
@@ -29,7 +42,7 @@
   font-size: v.$text-base;
   font-weight: 800;
   letter-spacing: 0.25em;
-  color: v.$text-primary;
+  color: var(--nav-text);
   cursor: pointer;
   user-select: none;
   transition: opacity 0.2s ease;
@@ -52,39 +65,63 @@
 .navLink {
   font-size: v.$text-sm;
   font-weight: 600;
-  color: v.$text-secondary;
+  color: var(--nav-text);
   cursor: pointer;
   transition: v.$transition-smooth;
 
   &:hover {
-    color: v.$text-primary;
+    color: v.$accent;
   }
 }
 
 .actions {
-  display: none;
+  display: flex;
   align-items: center;
   gap: v.$spacing-md;
+  margin-left: auto;
+  margin-right: 1rem;
 
   @include m.tablet {
-    display: flex;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
 .ctaButton {
+  display: none;
   padding: v.$spacing-xs v.$spacing-md;
   font-size: v.$text-sm;
   font-weight: 700;
   border-radius: v.$radius-sm;
   transition: v.$transition-smooth;
-  background-color: v.$text-primary;
-  color: v.$bg;
-  border: 1px solid v.$text-primary;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
+
+  @include m.tablet {
+    display: block;
+  }
 
   &:hover {
     background-color: transparent;
-    color: v.$text-primary;
-    border-color: v.$text-primary;
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.outlinedButton {
+  padding: v.$spacing-xs v.$spacing-md;
+  font-size: v.$text-sm;
+  font-weight: 700;
+  border-radius: v.$radius-sm;
+  transition: v.$transition-smooth;
+  background-color: transparent;
+  color: var(--nav-text);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -106,7 +143,7 @@
     display: block;
     height: 2px;
     width: 100%;
-    background-color: v.$text-primary;
+    background-color: var(--nav-text);
     border-radius: 2px;
     transition:
       transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -133,14 +170,25 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: v.$bg;
+  background-color: var(--nav-bg);
   z-index: 1005;
   display: flex;
   flex-direction: column;
-  padding: 100px v.$spacing-xl v.$spacing-xl;
-  gap: v.$spacing-xl;
+  align-items: center;
+  justify-content: center;
+  padding: v.$spacing-xl;
+  gap: 2rem;
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  @media (max-width: 768px) {
+    background-color: #0b1f38;
+
+    :global(html[data-theme="dark"]) &,
+    :global(html.dark) & {
+      background-color: #0c111d;
+    }
+  }
 
   &.open {
     transform: translateX(0);
@@ -152,33 +200,36 @@
 }
 
 .mobileNavLink {
-  font-size: v.$text-xl;
-  font-weight: 600;
-  color: v.$text-secondary;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--nav-text);
   cursor: pointer;
-  padding: v.$spacing-sm 0;
-  border-bottom: 1px solid v.$border;
+  padding: 0.5rem 0;
+  transition: v.$transition-smooth;
 
   &:hover {
-    color: v.$text-primary;
+    color: v.$accent;
+    transform: scale(1.05);
   }
 }
 
 .mobileCtaButton {
-  margin-top: v.$spacing-md;
-  padding: v.$spacing-md;
+  margin-top: 1rem;
+  padding: 0.875rem 2rem;
+  width: 100%;
+  max-width: 280px;
   font-size: v.$text-base;
   font-weight: 700;
   text-align: center;
   border-radius: v.$radius-md;
-  background-color: v.$text-primary;
-  color: v.$bg;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
   transition: v.$transition-smooth;
 
   &:hover {
     background-color: transparent;
-    color: v.$text-primary;
-    border: 1px solid v.$text-primary;
+    color: var(--accent);
   }
 }
 

@@ -11,6 +11,7 @@ $avatar-bg: var(--avatar-bg);
   padding: v.$spacing-xxl 0;
   border-bottom: 1px solid v.$border;
   width: 100%;
+  scroll-margin-top: 90px;
   @include m.fade-in-up(0.6s);
 }
 

@@ -12,7 +12,7 @@ export default function ClosingBanner() {
   };
 
   return (
-    <section className={styles.closingBanner}>
+    <section id="closing-banner" className={styles.closingBanner}>
       <div className={styles.glow} />
       <div className={styles.container}>
         <h2 className={styles.title}>Ready to maximize your URLs?</h2>

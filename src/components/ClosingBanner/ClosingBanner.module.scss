@@ -3,13 +3,14 @@
 
 .closingBanner {
   background: var(--closing-bg);
-  border-top: 1px solid v.$border;
-  border-bottom: 1px solid v.$border;
+  border-top: 1px solid var(--nav-border);
+  border-bottom: 1px solid var(--nav-border);
   padding: v.$spacing-xxl 0;
   width: 100%;
   text-align: center;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 90px;
   @include m.fade-in-up(0.7s);
 }
 
@@ -45,7 +46,7 @@
 .title {
   font-size: v.$text-3xl;
   font-weight: 800;
-  color: v.$text-primary;
+  color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1.2;
 
@@ -56,7 +57,7 @@
 
 .subtitle {
   font-size: v.$text-base;
-  color: v.$text-secondary;
+  color: rgba(255, 255, 255, 0.8);
   max-width: 540px;
   line-height: 1.6;
 }

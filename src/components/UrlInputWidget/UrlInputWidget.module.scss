@@ -1,4 +1,6 @@
 // Bitly-Style Colors for the White/Light Card Widget - Mapped to CSS variables for dark support
+@use "../../styles/mixins" as m;
+
 $widget-bg: var(--widget-bg);
 $widget-text-primary: var(--widget-text-primary);
 $widget-text-secondary: var(--widget-text-secondary);
@@ -18,60 +20,133 @@ $input-focus-shadow: var(--input-focus-shadow);
 $tab-hover-bg: var(--tab-hover-bg);
 $result-bg: var(--result-bg);
 
-.widgetCard {
-  background-color: $widget-bg;
-  border: 1px solid $widget-border;
-  border-radius: 16px;
-  box-shadow: $widget-shadow;
-  padding: 2rem;
+.widgetWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  text-align: left;
 }
 
-// Tabs Styling
+.widgetCard {
+  background-color: $widget-bg;
+  border: 1px solid $widget-border;
+  border-radius: 20px;
+  box-shadow: $widget-shadow;
+  padding: 1.25rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+
+  @include m.tablet {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+// Tabs Styling (Sliding pill-shaped tracker)
 .tabsContainer {
   display: flex;
-  gap: 1rem;
-  border-bottom: 2px solid $widget-border;
-  padding-bottom: 0.5rem;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+  padding: 4px;
   width: 100%;
+  max-width: 420px;
+  margin: 0 auto 1.5rem auto;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  :global(html[data-theme="dark"]) &,
+  :global(html.dark) & {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.activeIndicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background-color: $widget-bg;
+  border-radius: 26px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+
+  &.resolveActive {
+    transform: translateX(100%);
+  }
 }
 
 .tab {
-  background: none;
+  flex: 1;
+  background: transparent;
   border: none;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: $widget-text-secondary;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  padding: 0.625rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: color 0.25s ease;
+  z-index: 2;
   position: relative;
+  border-radius: 26px;
 
   &:hover {
-    color: $widget-text-primary;
-    background-color: $tab-hover-bg;
+    color: #ffffff;
   }
 
   &.active {
-    color: $widget-accent;
+    color: $widget-text-primary;
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background-color: $widget-accent;
-      border-radius: 3px 3px 0 0;
+    svg {
+      color: $widget-accent;
+    }
+
+    &:hover {
+      color: $widget-text-primary;
     }
   }
+}
+
+.tabIcon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  border-bottom: 1px solid $widget-border;
+  padding-bottom: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: $widget-text-primary;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.cardSubtitle {
+  font-size: 0.875rem;
+  color: $widget-text-secondary;
+  margin: 0;
 }
 
 // Form Styling

@@ -172,9 +172,12 @@ export default function UrlInputWidget() {
   };
 
   return (
-    <div className={styles.widgetCard}>
-      {/* Tabs */}
+    <div className={styles.widgetWrapper}>
+      {/* Tabs (Sliding pill-shaped tracker) */}
       <div className={styles.tabsContainer}>
+        <div
+          className={`${styles.activeIndicator} ${activeTab === "resolve" ? styles.resolveActive : ""}`}
+        />
         <button
           type="button"
           className={`${styles.tab} ${activeTab === "elongate" ? styles.active : ""}`}
@@ -184,6 +187,16 @@ export default function UrlInputWidget() {
             setResolveError(null);
           }}
         >
+          <svg
+            className={styles.tabIcon}
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            fill="none"
+          >
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
           Longen a URL
         </button>
         <button
@@ -195,146 +208,171 @@ export default function UrlInputWidget() {
             setElongateError(null);
           }}
         >
+          <svg
+            className={styles.tabIcon}
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            fill="none"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
           Decode a Longened URL
         </button>
       </div>
 
-      {activeTab === "elongate" ? (
-        /* ELONGATE PANEL */
-        <form
-          onSubmit={handleElongateSubmit}
-          className={styles.form}
-          noValidate
-        >
-          <div className={styles.inputGroup}>
-            <label className={styles.inputLabel} htmlFor="destination-url">
-              Destination URL
-            </label>
-            <input
-              id="destination-url"
-              type="url"
-              value={inputUrl}
-              onChange={handleElongateChange}
-              placeholder="Paste a URL. We'll make it worse."
-              className={`${styles.input} ${elongateError ? styles.inputError : ""}`}
-              disabled={elongateLoading}
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
-            />
-          </div>
-
-          {/* Verbosity Segmented Selector */}
-          <div className={styles.verbosityContainer}>
-            <span className={styles.inputLabel}>Elongation Verbosity</span>
-            <ThemeSwitcher selected={verbosity} onChange={setVerbosity} />
-          </div>
-
-          <div className={styles.metaRow}>
-            {elongateError ? (
-              <span className={styles.errorMessage} role="alert">
-                {elongateError}
-              </span>
-            ) : (
-              <span className={styles.helpText}>
-                Every character will be meticulously elongated.
-              </span>
-            )}
-            <span
-              className={`${styles.charCount} ${inputUrl.length > MAX_URL_LENGTH ? styles.overLimit : ""}`}
-            >
-              {inputUrl.length} / {MAX_URL_LENGTH}
-            </span>
-          </div>
-
-          <button
-            type="submit"
-            className={styles.ctaButton}
-            disabled={
-              !mounted ||
-              elongateLoading ||
-              !!elongateError ||
-              inputUrl.trim().length === 0
-            }
+      <div className={styles.widgetCard}>
+        {activeTab === "elongate" ? (
+          /* ELONGATE PANEL */
+          <form
+            onSubmit={handleElongateSubmit}
+            className={styles.form}
+            noValidate
           >
-            {elongateLoading ? "Designing..." : "Longen it"}
-          </button>
-
-          {/* Result State */}
-          {encodedSlug && (
-            <div className={styles.resultContainer}>
-              <span className={styles.resultTitle}>Elongated Artifact</span>
-              <textarea
-                className={styles.resultTextArea}
-                value={`${origin}/${encodedSlug}`}
-                readOnly
-                onClick={(e) => (e.target as HTMLTextAreaElement).select()}
-              />
-              <div className={styles.resultActionRow}>
-                <button
-                  type="button"
-                  onClick={handleCopySlug}
-                  className={`${styles.copyButton} ${copiedSlug ? styles.copied : ""}`}
-                >
-                  {copiedSlug ? "Copied!" : "Copy Link"}
-                </button>
-              </div>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Elongate a short URL</h2>
+              <p className={styles.cardSubtitle}>
+                No database storage required.
+              </p>
             </div>
-          )}
-        </form>
-      ) : (
-        /* RESOLVE PANEL */
-        <form onSubmit={handleResolveSubmit} className={styles.form} noValidate>
-          <div className={styles.inputGroup}>
-            <label className={styles.inputLabel} htmlFor="elongated-url">
-              Elongated Link or Code
-            </label>
-            <input
-              id="elongated-url"
-              type="text"
-              value={inputResolve}
-              onChange={(e) => {
-                setInputResolve(e.target.value);
-                setResolveError(null);
-              }}
-              placeholder="Paste elongated URL or words (e.g. solid-hammer-pulse...)"
-              className={`${styles.input} ${resolveError ? styles.inputError : ""}`}
-              disabled={resolveLoading}
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
-            />
-          </div>
 
-          <div className={styles.metaRow}>
-            {resolveError ? (
-              <span className={styles.errorMessage} role="alert">
-                {resolveError}
-              </span>
-            ) : (
-              <span className={styles.helpText}>
-                Our high-dimensional parser will attempt recovery.
-              </span>
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel} htmlFor="destination-url">
+                Destination URL
+              </label>
+              <input
+                id="destination-url"
+                type="url"
+                value={inputUrl}
+                onChange={handleElongateChange}
+                placeholder="Paste a URL. We'll make it worse."
+                className={`${styles.input} ${elongateError ? styles.inputError : ""}`}
+                disabled={elongateLoading}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck="false"
+              />
+            </div>
+
+            {/* Verbosity Segmented Selector */}
+            <div className={styles.verbosityContainer}>
+              <span className={styles.inputLabel}>Elongation Verbosity</span>
+              <ThemeSwitcher selected={verbosity} onChange={setVerbosity} />
+            </div>
+
+            <div className={styles.metaRow}>
+              {elongateError ? (
+                <span className={styles.errorMessage} role="alert">
+                  {elongateError}
+                </span>
+              ) : (
+                <span className={styles.helpText}>
+                  Every character will be meticulously elongated.
+                </span>
+              )}
+              {mounted && inputUrl.length > 0 && (
+                <span
+                  className={`${styles.charCount} ${inputUrl.length > MAX_URL_LENGTH ? styles.overLimit : ""}`}
+                >
+                  {inputUrl.length}/{MAX_URL_LENGTH}
+                </span>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={
+                elongateLoading || (mounted && inputUrl.length > MAX_URL_LENGTH)
+              }
+              className={styles.ctaButton}
+            >
+              {elongateLoading ? "Designing..." : "Longen it"}
+            </button>
+
+            {/* Result State */}
+            {encodedSlug && (
+              <div className={styles.resultContainer}>
+                <span className={styles.resultTitle}>Elongated Artifact</span>
+                <textarea
+                  className={styles.resultTextArea}
+                  value={`${origin}/${encodedSlug}`}
+                  readOnly
+                  onClick={(e) => (e.target as HTMLTextAreaElement).select()}
+                />
+                <div className={styles.resultActionRow}>
+                  <button
+                    type="button"
+                    onClick={handleCopySlug}
+                    className={`${styles.copyButton} ${copiedSlug ? styles.copied : ""}`}
+                  >
+                    {copiedSlug ? "Copied!" : "Copy Link"}
+                  </button>
+                </div>
+              </div>
             )}
-          </div>
-
-          <button
-            type="submit"
-            className={styles.ctaButton}
-            disabled={
-              !mounted || resolveLoading || inputResolve.trim().length === 0
-            }
+          </form>
+        ) : (
+          /* RESOLVE PANEL */
+          <form
+            onSubmit={handleResolveSubmit}
+            className={styles.form}
+            noValidate
           >
-            {resolveLoading ? "Reconstructing..." : "Resolve"}
-          </button>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>Decode an elongated link</h2>
+              <p className={styles.cardSubtitle}>
+                Translate human-readable prose back to URL.
+              </p>
+            </div>
 
-          {/* Result State */}
-          {resolvedUrl && (
-            <div className={styles.resultContainer}>
-              <span className={styles.resultTitle}>Resolved Destination</span>
-              <div className={styles.resultBox}>
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel} htmlFor="elongated-url">
+                Elongated Link or Code
+              </label>
+              <input
+                id="elongated-url"
+                type="text"
+                value={inputResolve}
+                onChange={(e) => {
+                  setInputResolve(e.target.value);
+                  setResolveError(null);
+                }}
+                placeholder="Paste elongated URL or words (e.g. solid-hammer-pulse...)"
+                className={`${styles.input} ${resolveError ? styles.inputError : ""}`}
+                disabled={resolveLoading}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck="false"
+              />
+            </div>
+
+            <div className={styles.metaRow}>
+              {resolveError ? (
+                <span className={styles.errorMessage} role="alert">
+                  {resolveError}
+                </span>
+              ) : (
+                <span className={styles.helpText}>
+                  Enter the prose to decode the target URL.
+                </span>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={resolveLoading || !inputResolve.trim()}
+              className={styles.ctaButton}
+            >
+              {resolveLoading ? "Resolving..." : "Decode Link"}
+            </button>
+
+            {/* Resolved Link Result */}
+            {resolvedUrl && (
+              <div className={styles.resultContainer}>
+                <span className={styles.resultTitle}>Resolved Destination</span>
                 <div className={styles.resultLinkBox}>
                   <a
                     href={resolvedUrl}
@@ -363,10 +401,10 @@ export default function UrlInputWidget() {
                   </a>
                 </div>
               </div>
-            </div>
-          )}
-        </form>
-      )}
+            )}
+          </form>
+        )}
+      </div>
     </div>
   );
 }

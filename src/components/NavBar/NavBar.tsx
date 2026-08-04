@@ -43,7 +43,7 @@ export default function NavBar() {
         <div className={styles.navLinks}>
           <span
             className={styles.navLink}
-            onClick={() => handleNavClick("how-it-works")}
+            onClick={() => handleNavClick("features-cards")}
           >
             How it works
           </span>
@@ -62,7 +62,6 @@ export default function NavBar() {
         </div>
 
         <div className={styles.actions}>
-          <ThemeToggle />
           <button
             type="button"
             className={styles.ctaButton}
@@ -70,6 +69,7 @@ export default function NavBar() {
           >
             Longen a URL
           </button>
+          <ThemeToggle />
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -89,7 +89,7 @@ export default function NavBar() {
         <div className={`${styles.mobileMenu} ${isOpen ? styles.open : ""}`}>
           <span
             className={styles.mobileNavLink}
-            onClick={() => handleNavClick("how-it-works")}
+            onClick={() => handleNavClick("features-cards")}
           >
             How it works
           </span>
@@ -105,25 +105,6 @@ export default function NavBar() {
           >
             Examples
           </span>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "10px 0",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: 600,
-                color: "var(--text-secondary)",
-              }}
-            >
-              Theme Mode
-            </span>
-            <ThemeToggle />
-          </div>
           <button
             type="button"
             className={styles.mobileCtaButton}

@@ -2,7 +2,7 @@
 @use "./mixins" as m;
 
 @mixin light-theme-variables {
-  // Light Theme (Default - Bitly-Inspired)
+  // Light Theme (Default - Bitly-Inspired Navy/White Layout)
   --bg: #ffffff;
   --surface: #f4f6f8;
   --surface-hover: #eef1f4;
@@ -18,25 +18,31 @@
   --success: #10b981;
 
   // Custom component-specific styling overrides
-  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg: #0b1f38; // Dark navy navbar
+  --nav-text: rgba(255, 255, 255, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.08);
+
+  --hero-bg: #0b1f38; // Dark navy hero
+  --hero-text: #ffffff;
+  --hero-desc-color: rgba(255, 255, 255, 0.8);
   --hero-glow: radial-gradient(
     circle,
     rgba(238, 97, 35, 0.08) 0%,
-    rgba(255, 255, 255, 0) 70%
+    rgba(11, 31, 56, 0) 70%
   );
-  --quote-color: rgba(238, 97, 35, 0.25);
-  --closing-bg: linear-gradient(135deg, #ee6123 0%, #ff783d 100%);
-  --closing-btn-bg: #ffffff;
-  --closing-btn-text: #ee6123;
+  --quote-color: rgba(238, 97, 35, 0.15);
+  --closing-bg: linear-gradient(135deg, #0b1f38 0%, #071424 100%);
+  --closing-btn-bg: #ee6123;
+  --closing-btn-text: #ffffff;
 
   // Widget settings mapping
-  --widget-bg: #ffffff;
+  --widget-bg: #fcfaf6; // Cream/off-white widget background
   --widget-text-primary: #1c1e21;
   --widget-text-secondary: #5c6065;
   --widget-text-muted: #82878d;
   --widget-accent: #ee6123;
   --widget-border: #e4e8ec;
-  --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 
   // URL input and textarea theme variables
   --input-bg: #ffffff;
@@ -54,55 +60,61 @@
 }
 
 @mixin dark-theme-variables {
-  // Dark Theme (Original Longly Carbon Theme with Orange Accents)
-  --bg: #0b0b0c;
-  --surface: #161617;
-  --surface-hover: #1e1e20;
-  --text-primary: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --text-muted: #86868b;
-  --accent: #ee6123; // Bitly Orange
+  // Dark Theme (Elegant Midnight Navy - Soft on the eyes, matching orange accents)
+  --bg: #0c111d; // Soft slate midnight navy background
+  --surface: #161f30; // Elevated card containers
+  --surface-hover: #1f2a40; // Input hover/active states
+  --text-primary: #f8fafc; // High-contrast soft white text
+  --text-secondary: #94a3b8; // Mid-contrast slate gray text
+  --text-muted: #64748b; // Muted slate text
+  --accent: #ee6123; // Brand orange
   --accent-hover: #d5531b;
-  --border: #333336;
-  --border-focus: #44444a;
-  --danger: #ff453a;
-  --danger-bg: rgba(255, 69, 58, 0.1);
-  --success: #30d158;
+  --border: #222f43; // Soft container border
+  --border-focus: #ee6123;
+  --danger: #ef4444;
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --success: #10b981;
 
   // Custom component-specific styling overrides
-  --nav-bg: rgba(11, 11, 12, 0.85);
+  --nav-bg: rgba(12, 17, 29, 0.95); // Matching navy header
+  --nav-text: #f8fafc;
+  --nav-border: #222f43;
+
+  --hero-bg: #0c111d;
+  --hero-text: #ffffff;
+  --hero-desc-color: #94a3b8;
   --hero-glow: radial-gradient(
     circle,
     rgba(238, 97, 35, 0.08) 0%,
-    rgba(11, 11, 12, 0) 70%
+    rgba(12, 17, 29, 0) 70%
   );
   --quote-color: rgba(238, 97, 35, 0.25);
-  --closing-bg: linear-gradient(135deg, #161617 0%, #0b0b0c 100%);
-  --closing-btn-bg: var(--text-primary);
-  --closing-btn-text: var(--bg);
+  --closing-bg: linear-gradient(135deg, #161f30 0%, #0c111d 100%);
+  --closing-btn-bg: #ee6123;
+  --closing-btn-text: #ffffff;
 
   // Widget settings mapping (dark card for dark theme)
-  --widget-bg: #161617;
-  --widget-text-primary: #f5f5f7;
-  --widget-text-secondary: #a1a1a6;
-  --widget-text-muted: #86868b;
+  --widget-bg: #161f30;
+  --widget-text-primary: #f8fafc;
+  --widget-text-secondary: #94a3b8;
+  --widget-text-muted: #64748b;
   --widget-accent: #ee6123;
-  --widget-border: #333336;
-  --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --widget-border: #222f43;
+  --widget-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 
   // URL input and textarea theme variables
-  --input-bg: #1e1e20;
-  --input-hover-border: #44444a;
-  --input-disabled-bg: #0b0b0c;
+  --input-bg: #1f2a40;
+  --input-hover-border: #3b4e6d;
+  --input-disabled-bg: #0c111d;
   --input-focus-shadow: rgba(238, 97, 35, 0.25);
-  --tab-hover-bg: #1e1e20;
-  --result-bg: #0b0b0c;
+  --tab-hover-bg: #1f2a40;
+  --result-bg: #0c111d;
 
   // Mockup theme variables
-  --bc-bg: linear-gradient(135deg, #1e1e20 0%, #111112 100%);
+  --bc-bg: linear-gradient(135deg, #1f2a40 0%, #0c111d 100%);
   --bc-border: 1px solid rgba(255, 255, 255, 0.08);
-  --bc-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --avatar-bg: #333336;
+  --bc-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --avatar-bg: #222f43;
 }
 
 :root {
